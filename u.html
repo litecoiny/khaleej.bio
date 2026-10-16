@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Profile — khaleej.bio</title>
+<meta name="description" content="A khaleej.bio page.">
+<meta name="theme-color" content="#1F1F1F">
+<link rel="icon" href="assets/img/wing.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Pixelify+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/core.css">
+<link rel="stylesheet" href="assets/css/dashboard.css">
+<link rel="stylesheet" href="assets/css/profile.css">
+</head>
+<body class="pub-body overlay-page">
+<script src="assets/js/icons.js"></script>
+
+<div class="bg-layers" aria-hidden="true">
+  <div class="bg-wing"></div>
+  <div class="bg-grid"></div>
+  <div class="bg-aurora a1" id="pbGlow1"></div>
+  <div class="bg-aurora a3" id="pbGlow2"></div>
+  <div class="bg-noise"></div>
+  <div class="bg-vignette"></div>
+</div>
+<div class="pub-custom-bg" id="pubBg" aria-hidden="true"></div>
+
+<!-- splash gate -->
+<div class="splash" id="splash" role="button" tabindex="0" aria-label="Enter page" hidden>
+  <div class="splash-in">
+    <p class="splash-quote" id="splashName"></p>
+    <span class="splash-hint" id="splashHint">click anywhere to enter</span>
+  </div>
+</div>
+
+<main class="pub-wrap">
+  <a class="pub-home" href="index.html" data-cursor="home">
+    <img src="assets/img/wing.png" alt="khaleej.bio">
+  </a>
+
+  <article class="pub-card" id="pubCard">
+    <div class="pv" id="pvRender"></div>
+  </article>
+
+  <div class="pub-actions" id="pubActions">
+    <button class="btn btn-ghost btn-sm" id="shareBtn" data-cursor="copy">
+      <svg class="ico"><use href="#i-copy"/></svg> Copy link
+    </button>
+    <a class="btn btn-ghost btn-sm" href="dashboard.html" id="editBtn" hidden>
+      <svg class="ico"><use href="#i-sliders"/></svg> Edit page
+    </a>
+  </div>
+
+  <footer class="pub-foot">
+    <a class="brand" href="index.html">
+      <img src="assets/img/wing.png" alt="">
+      <span>khaleej<span class="tld">.bio</span></span>
+    </a>
+    <p>Want one of these? <a class="link-u" href="signup.html">Claim your name</a></p>
+  </footer>
+</main>
+
+<!-- not found -->
+<section class="pub-404" id="notFound" hidden>
+  <div class="nf-in">
+    <img src="assets/img/wing.png" alt="">
+    <h1>This name is free.</h1>
+    <p>Nobody has claimed <b id="nfName">this page</b> yet. It could be yours in about three minutes.</p>
+    <div class="row gap-12" style="justify-content:center;flex-wrap:wrap">
+      <a class="btn btn-primary" id="nfClaim" href="signup.html">
+        Claim it <svg class="ico"><use href="#i-arrow-right"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="/demo" id="nfDemo">See an example</a>
+    </div>
+  </div>
+</section>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/defaults.js"></script>
+<script src="assets/js/pro-features.js"></script>
+<script src="assets/js/badges.js"></script>
+<script src="assets/js/valo.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/player.js"></script>
+<script src="assets/js/profile-render.js"></script>
+<script src="assets/js/profile.js"></script>
+</body>
+</html>

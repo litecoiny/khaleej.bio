@@ -1,0 +1,13 @@
+{
+  "name": "khaleej-bio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "khaleej.bio — bio-link profile pages with a Discord presence bot",
+  "scripts": {
+    "dev": "node --disable-warning=ExperimentalWarning server.js",
+    "start": "node --disable-warning=ExperimentalWarning server.js"
+  },
+  "engines": {
+    "node": ">=22.13"
+  }
+}

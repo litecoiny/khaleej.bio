@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Authorise with Discord — khaleej.bio</title>
+<meta name="description" content="Connect your Discord account to khaleej.bio.">
+<meta name="theme-color" content="#1F1F1F">
+<link rel="icon" href="assets/img/wing.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/core.css">
+<link rel="stylesheet" href="assets/css/auth.css">
+</head>
+<body>
+<script src="assets/js/icons.js"></script>
+
+<div class="bg-layers" aria-hidden="true">
+  <div class="bg-wing"></div>
+  <div class="bg-grid"></div>
+  <div class="bg-aurora a1"></div>
+  <div class="bg-aurora a2"></div>
+  <div class="bg-noise"></div>
+  <div class="bg-vignette"></div>
+</div>
+
+<main class="oauth-wrap">
+  <section class="oauth-card" id="oauthCard" data-reveal="scale">
+    <div class="oauth-logos">
+      <img src="assets/img/wing.png" alt="khaleej.bio">
+      <span class="dash"><i></i><i></i><i></i></span>
+      <span class="dsc"><svg class="ico"><use href="#i-discord"/></svg></span>
+    </div>
+
+    <h1 id="oauthTitle">khaleej.bio wants to access your Discord account</h1>
+    <p id="oauthSub">This creates your page instantly — no password to remember.</p>
+
+    <div class="you">
+      <span class="avatar"><img src="assets/img/avatar-3.svg" alt="" id="dUserAvatar"></span>
+      <div>
+        <b id="dUserName">nova.k</b>
+        <span id="dUserMail">hound@discord.local</span>
+      </div>
+      <span class="chip chip-ok" id="dUserState">Signed in</span>
+    </div>
+
+    <ul class="scopes" id="scopeList">
+      <li><svg class="ico"><use href="#i-check-circle"/></svg> Access your username, avatar and banner</li>
+      <li><svg class="ico"><use href="#i-check-circle"/></svg> Read your email address</li>
+      <li><svg class="ico"><use href="#i-check-circle"/></svg> Show your live presence on your page (optional)</li>
+    </ul>
+
+    <div class="oauth-actions">
+      <button class="btn btn-ghost btn-lg" id="cancelBtn">Cancel</button>
+      <button class="btn btn-discord btn-lg" id="authorizeBtn">
+        <svg class="ico"><use href="#i-discord"/></svg>
+        Authorise
+      </button>
+    </div>
+
+    <p class="oauth-note" id="oauthNote">
+      Demo mode — this screen simulates the Discord consent flow locally.
+      Add a client ID in <b>assets/js/config.js</b> to run the real one.
+      <br>
+      <button class="link-u" id="switchAccount" style="margin-top:8px">Use a different Discord name</button>
+    </p>
+  </section>
+</main>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/defaults.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/discord.js"></script>
+</body>
+</html>

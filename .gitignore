@@ -1,0 +1,6 @@
+uploads/
+assets/*-*-*-*-*.png
+node_modules/
+.env
+data/
+.env.txt

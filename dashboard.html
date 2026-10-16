@@ -1,0 +1,858 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard — khaleej.bio</title>
+<meta name="description" content="Edit your khaleej.bio page, links and theme.">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" href="assets/img/wing.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Pixelify+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/core.css">
+<link rel="stylesheet" href="assets/css/dashboard.css">
+<link rel="stylesheet" href="assets/css/profile.css">
+</head>
+<body class="dash-body">
+<script src="assets/js/icons.js"></script>
+
+<div class="bg-layers" aria-hidden="true">
+  <div class="bg-wing"></div>
+  <div class="bg-aurora a1"></div>
+  <div class="bg-aurora a3"></div>
+  <div class="bg-noise"></div>
+</div>
+
+<div class="side-scrim" id="sideScrim"></div>
+
+<div class="dash">
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="side" id="side">
+    <div class="side-head">
+      <a class="brand" href="index.html">
+        <img src="assets/img/wing.png" alt="">
+        <span>khaleej<span class="tld">.bio</span></span>
+      </a>
+    </div>
+
+    <nav class="side-nav" aria-label="Dashboard">
+      <span class="grp">Main</span>
+      <a href="#overview" data-panel="overview" class="active">
+        <svg class="ico"><use href="#i-home"/></svg> Overview
+      </a>
+
+      <span class="grp">Your page</span>
+      <a href="#appearance" data-panel="appearance">
+        <svg class="ico"><use href="#i-palette"/></svg> Appearance
+      </a>
+      <a href="#links" data-panel="links">
+        <svg class="ico"><use href="#i-link"/></svg> Links
+        <span class="chip tag" id="linkCount">0</span>
+      </a>
+      <a href="#badges" data-panel="badges">
+        <svg class="ico"><use href="#i-star"/></svg> Badges
+      </a>
+      <a href="#pro" data-panel="pro">
+        <svg class="ico"><use href="#i-spark"/></svg> Extras
+      </a>
+
+      <span class="grp">Account</span>
+      <a href="#settings" data-panel="settings">
+        <svg class="ico"><use href="#i-settings"/></svg> Settings
+      </a>
+    </nav>
+
+    <div class="side-foot">
+      <div class="me-card">
+        <span class="avatar"><img src="assets/img/avatar-default.svg" alt="" id="meAvatar"></span>
+        <div class="mi">
+          <b id="meName" title="">—</b>
+          <span id="meHandle" title="">—</span>
+        </div>
+        <button class="out" id="logoutBtn" aria-label="Log out" title="Log out">
+          <svg class="ico"><use href="#i-logout"/></svg>
+        </button>
+      </div>
+    </div>
+  </aside>
+  <button class="side-handle" id="sideHandle" type="button" aria-label="Pull menu" data-tip="Drag to tuck or pull the menu">
+    <svg class="ico"><use href="#i-chevron-left"/></svg>
+  </button>
+
+  <!-- ============ MAIN ============ -->
+  <div class="main">
+    <header class="topbar">
+      <div class="row gap-12">
+        <button class="burger-dash" id="burgerDash" aria-label="Open menu">
+          <svg class="ico"><use href="#i-menu"/></svg>
+        </button>
+        <div>
+          <h1 id="pageTitle">Overview</h1>
+          <p class="sub" id="pageSub">Your page at a glance</p>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <div class="url-pill">
+          <span class="txt">khaleej.bio/<b id="urlName">—</b></span>
+          <button id="copyUrl" aria-label="Copy page link" title="Copy link">
+            <svg class="ico ico-sm"><use href="#i-copy"/></svg>
+          </button>
+        </div>
+        <a class="btn btn-primary btn-sm" id="viewPage" href="u.html">
+          <svg class="ico"><use href="#i-external"/></svg>
+          <span class="txt">View page</span>
+        </a>
+      </div>
+    </header>
+
+    <div class="content">
+
+      <!-- ============ OVERVIEW ============ -->
+      <section class="panel on" id="panel-overview">
+        <header class="panel-head">
+          <h2 id="greeting">Welcome back.</h2>
+          <p>Edit your page, add links, and preview how it looks.</p>
+        </header>
+
+        <div class="split">
+          <div class="stack gap-16">
+            <article class="d-card">
+              <div class="d-head">
+                <div>
+                  <h3>Quick start</h3>
+                  <p>The three things people do first</p>
+                </div>
+              </div>
+              <div class="opt-grid" style="padding:18px 22px 22px">
+                <a class="opt" href="#appearance" data-panel="appearance">
+                  <svg class="ico"><use href="#i-palette"/></svg> Appearance
+                </a>
+                <a class="opt" href="#links" data-panel="links">
+                  <svg class="ico"><use href="#i-link"/></svg> Add links
+                </a>
+                <a class="opt" id="viewPageQuick" href="u.html">
+                  <svg class="ico"><use href="#i-external"/></svg> View page
+                </a>
+              </div>
+            </article>
+
+            <article class="d-card">
+              <div class="d-head">
+                <div>
+                  <h3>Your links</h3>
+                  <p>What visitors see on your page</p>
+                </div>
+                <a class="btn btn-ghost btn-sm" href="#links" data-panel="links">Manage</a>
+              </div>
+              <ul class="rowlist" id="topLinks"></ul>
+            </article>
+          </div>
+
+          <div class="stack gap-16">
+            <article class="d-card complete">
+              <div class="complete-top">
+                <span class="muted" style="font-size:.85rem">Page checklist</span>
+              </div>
+              <ul class="complete-steps" id="strengthSteps"></ul>
+            </article>
+
+            <div class="preview-host"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ APPEARANCE ============ -->
+      <section class="panel" id="panel-appearance">
+        <header class="panel-head">
+          <h2>Appearance</h2>
+          <p>Everything here updates the preview live. Hit save when you like it.</p>
+        </header>
+
+        <div class="split">
+          <div class="stack gap-16">
+            <article class="d-card">
+              <div class="d-head"><div><h3>Identity</h3><p>How people recognise you</p></div></div>
+              <div class="ctl-group">
+                <div class="media-row">
+                  <span class="avatar"><img src="assets/img/avatar-default.svg" alt="" id="avatarPreview"></span>
+                  <div class="mr-txt">
+                    <h4>Profile picture</h4>
+                    <p>Square image, at least 200×200. Up to 4 MB.</p>
+                    <div class="btns">
+                      <button class="btn btn-ghost btn-sm" id="avatarBtn">
+                        <svg class="ico"><use href="#i-upload"/></svg> Upload
+                      </button>
+                      <button class="btn btn-ghost btn-sm" id="avatarClear">Remove</button>
+                      <input type="file" id="avatarInput" accept="image/*" hidden>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label>Banner</label>
+                  <div class="banner-drop" id="bannerDrop">
+                    <img src="assets/img/banner-default.svg" alt="" id="bannerPreview">
+                    <span class="bd-cta">
+                      <svg class="ico ico-lg"><use href="#i-image"/></svg>
+                      Click to replace the banner
+                    </span>
+                    <input type="file" id="bannerInput" accept="image/*" hidden>
+                  </div>
+                </div>
+
+                <div class="grid-2">
+                  <div class="field">
+                    <label for="fDisplay">Display name</label>
+                    <div class="input-wrap">
+                      <svg class="ico"><use href="#i-user"/></svg>
+                      <input type="text" id="fDisplay" maxlength="32" placeholder="Your name">
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="fLocation">Location</label>
+                    <div class="input-wrap">
+                      <svg class="ico"><use href="#i-map"/></svg>
+                      <input type="text" id="fLocation" maxlength="40" placeholder="Berlin">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label for="fBio">Bio <span class="faint" id="bioCount">0/160</span></label>
+                  <div class="input-wrap ta">
+                    <textarea id="fBio" maxlength="160" placeholder="Tell people what you do."></textarea>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="d-card">
+              <div class="d-head"><div><h3>Theme</h3><p>Accent colour and layout</p></div></div>
+              <div class="ctl-group">
+                <div class="field">
+                  <label>Accent</label>
+                  <div class="swatch-row" id="accentRow">
+                    <button class="swatch" data-color="#FFFFFF" style="background:linear-gradient(150deg,#FFFFFF,#1F1F1F)" aria-label="Brand blue"></button>
+                    <button class="swatch" data-color="#1F1F1F" style="background:linear-gradient(150deg,#1F1F1F,#0B0B0B)" aria-label="Deep navy"></button>
+                    <button class="swatch" data-color="#E0E0E0" style="background:linear-gradient(150deg,#E0E0E0,#3D3D3D)" aria-label="Sky"></button>
+                    <button class="swatch" data-color="#A3A3A3" style="background:linear-gradient(150deg,#A3A3A3,#565065)" aria-label="Mist"></button>
+                    <button class="swatch" data-color="#7B7591" style="background:linear-gradient(150deg,#7B7591,#3A3648)" aria-label="Dusk"></button>
+                    <button class="swatch" data-color="#F0F0F0" style="background:linear-gradient(150deg,#F0F0F0,#FFFFFF)" aria-label="Ice"></button>
+                    <input type="color" class="color-input" id="accentCustom" value="#FFFFFF" aria-label="Custom accent colour">
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label>Layout</label>
+                  <div class="opt-grid layouts" id="layoutRow">
+                    <button class="opt" data-layout="glass">Glass</button>
+                    <button class="opt" data-layout="card">Card</button>
+                    <button class="opt" data-layout="classic">Classic</button>
+                    <button class="opt on" data-layout="big">Big</button>
+                    <button class="opt" data-layout="spread">Spread</button>
+                    <button class="opt" data-layout="wide">Wide</button>
+                    <button class="opt" data-layout="left">Left</button>
+                    <button class="opt" data-layout="minimal">Minimal</button>
+                  </div>
+                  <span class="hint">Card is the wide profile card. Big is the centred panel. Spread puts you on the left.</span>
+                </div>
+                <div class="grid-2">
+                  <div class="field">
+                    <label for="cardOp">Card opacity <span class="faint" id="cardOpVal">78%</span></label>
+                    <input type="range" class="range" id="cardOp" min="40" max="95" value="78">
+                  </div>
+                  <div class="field">
+                    <label for="cardBlur">Card blur <span class="faint" id="cardBlurVal">24</span></label>
+                    <input type="range" class="range" id="cardBlur" min="0" max="40" value="24">
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="d-card">
+              <div class="d-head"><div><h3>Page background</h3><p>Full page behind your card</p></div></div>
+              <div class="ctl-group">
+                <div class="field">
+                  <label>Type</label>
+                  <div class="opt-grid" id="bgTypeRow">
+                    <button class="opt on" data-bg="none">None</button>
+                    <button class="opt" data-bg="color">Color</button>
+                    <button class="opt" data-bg="gradient">Gradient</button>
+                    <button class="opt" data-bg="image">Image</button>
+                    <button class="opt" data-bg="video">Video (mp4)</button>
+                  </div>
+                </div>
+
+                <div id="bgColorFields" hidden>
+                  <div class="field">
+                    <label>Color</label>
+                    <div class="swatch-row" id="bgColorRow">
+                      <button class="swatch" data-color="#1F1F1F" style="background:#1F1F1F" aria-label="Deep navy"></button>
+                      <button class="swatch" data-color="#FFFFFF" style="background:#FFFFFF" aria-label="Brand blue"></button>
+                      <button class="swatch" data-color="#E0E0E0" style="background:#E0E0E0" aria-label="Sky"></button>
+                      <button class="swatch" data-color="#A3A3A3" style="background:#A3A3A3" aria-label="Mist"></button>
+                      <button class="swatch" data-color="#7B7591" style="background:#7B7591" aria-label="Dusk"></button>
+                      <button class="swatch" data-color="#091120" style="background:#091120" aria-label="Ink"></button>
+                      <input type="color" class="color-input" id="bgColorCustom" value="#1F1F1F" aria-label="Custom background colour">
+                      <input type="text" class="hex-input" id="bgColorHex" value="#1F1F1F" maxlength="7" spellcheck="false" aria-label="Background hex">
+                    </div>
+                  </div>
+                  <div class="field" id="bgColor2Wrap" hidden>
+                    <label>Second color</label>
+                    <div class="swatch-row" id="bgColor2Row">
+                      <button class="swatch" data-color="#A3A3A3" style="background:#A3A3A3" aria-label="Mist"></button>
+                      <button class="swatch" data-color="#1F1F1F" style="background:#1F1F1F" aria-label="Deep navy"></button>
+                      <button class="swatch" data-color="#FFFFFF" style="background:#FFFFFF" aria-label="Brand blue"></button>
+                      <button class="swatch" data-color="#E0E0E0" style="background:#E0E0E0" aria-label="Sky"></button>
+                      <button class="swatch" data-color="#7B7591" style="background:#7B7591" aria-label="Dusk"></button>
+                      <button class="swatch" data-color="#091120" style="background:#091120" aria-label="Ink"></button>
+                      <input type="color" class="color-input" id="bgColor2Custom" value="#A3A3A3" aria-label="Custom second colour">
+                      <input type="text" class="hex-input" id="bgColor2Hex" value="#A3A3A3" maxlength="7" spellcheck="false" aria-label="Second hex">
+                    </div>
+                  </div>
+                </div>
+
+                <div id="bgVideoFields" hidden>
+                  <div class="field">
+                    <label>Background video</label>
+                    <div class="btns">
+                      <button class="btn btn-ghost btn-sm" id="bgVideoBtn" type="button">
+                        <svg class="ico"><use href="#i-upload"/></svg> Upload mp4
+                      </button>
+                      <button class="btn btn-ghost btn-sm" id="bgVideoClear" type="button">Remove</button>
+                      <input type="file" id="bgVideoInput" accept="video/mp4,video/webm,.mp4,.webm,.m4v,.mov" hidden>
+                    </div>
+                    <span class="hint" id="bgVideoHint">Free on every plan. mp4 or webm up to 100 MB, loops silently behind your page.</span>
+                  </div>
+                  <div class="field">
+                    <label for="fBgVideo">Or video URL</label>
+                    <div class="input-wrap">
+                      <svg class="ico"><use href="#i-link"/></svg>
+                      <input type="url" id="fBgVideo" placeholder="https://…/clip.mp4">
+                    </div>
+                  </div>
+                </div>
+
+                <div id="bgImageFields" hidden>
+                  <div class="field">
+                    <label>Background image</label>
+                    <div class="banner-drop" id="bgDrop">
+                      <img src="" alt="" id="bgPreview" hidden>
+                      <span class="bd-cta">
+                        <svg class="ico ico-lg"><use href="#i-image"/></svg>
+                        Upload an image
+                      </span>
+                      <input type="file" id="bgInput" accept="image/*" hidden>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="fBgUrl">Or image URL</label>
+                    <div class="input-wrap">
+                      <svg class="ico"><use href="#i-link"/></svg>
+                      <input type="url" id="fBgUrl" placeholder="https://">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="field" id="bgDimWrap" hidden>
+                  <label for="bgDim">Dim overlay <span class="faint" id="bgDimVal">40%</span></label>
+                  <input type="range" class="range" id="bgDim" min="0" max="80" value="40">
+                  <span class="hint">Keeps your name and links readable.</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="d-card">
+              <div class="d-head"><div><h3>Effects</h3><p>Motion on your public page</p></div></div>
+              <div class="ctl-group" style="gap:0" id="effectRows">
+                <div class="toggle-row">
+                  <div class="tr-txt"><b>Splash screen</b><span>Visitors tap once to enter — lets audio autoplay.</span></div>
+                  <label class="switch"><input type="checkbox" data-setting="splash"><span class="track"></span></label>
+                </div>
+                <div class="toggle-row">
+                  <div class="tr-txt"><b>3D tilt on hover</b><span>Your card leans toward the mouse in 3D.</span></div>
+                  <label class="switch"><input type="checkbox" data-setting="tilt"><span class="track"></span></label>
+                </div>
+                <div class="toggle-row">
+                  <div class="tr-txt"><b>Typewriter bio</b><span>Types your bio out one character at a time.</span></div>
+                  <label class="switch"><input type="checkbox" data-setting="typing"><span class="track"></span></label>
+                </div>
+                <div class="toggle-row">
+                  <div class="tr-txt"><b>Audio player</b><span>Shows your track with a play button.</span></div>
+                  <label class="switch"><input type="checkbox" data-setting="music"><span class="track"></span></label>
+                </div>
+                <div class="toggle-row">
+                  <div class="tr-txt"><b>Discord presence</b><span>Live status and current game.</span></div>
+                  <label class="switch"><input type="checkbox" data-setting="discordPresence"><span class="track"></span></label>
+                </div>
+                <div class="toggle-row">
+                  <div class="tr-txt"><b>View counter</b><span>Shows how many people opened your page.</span></div>
+                  <label class="switch"><input type="checkbox" data-setting="showViews"><span class="track"></span></label>
+                </div>
+                <div class="toggle-row">
+                  <div class="tr-txt"><b>Animated tab title</b><span>Types your name in the browser tab.</span></div>
+                  <label class="switch"><input type="checkbox" data-setting="animatedTitle"><span class="track"></span></label>
+                </div>
+                <div class="toggle-row">
+                  <div class="tr-txt"><b>Volume control</b><span>Show a volume slider on the player.</span></div>
+                  <label class="switch"><input type="checkbox" data-setting="volume"><span class="track"></span></label>
+                </div>
+                <div class="toggle-row">
+                  <div class="tr-txt"><b>Card glow</b><span>Soft accent bloom around the profile.</span></div>
+                  <label class="switch"><input type="checkbox" data-theme="glow"><span class="track"></span></label>
+                </div>
+                <div class="toggle-row">
+                  <div class="tr-txt"><b>Monochrome icons</b><span>Socials in a single accent colour.</span></div>
+                  <label class="switch"><input type="checkbox" data-theme="monochrome"><span class="track"></span></label>
+                </div>
+              </div>
+            </article>
+
+            <article class="d-card">
+              <div class="d-head"><div><h3>Username &amp; background effects</h3><p>Glow, typewriter and motion</p></div></div>
+              <div class="ctl-group">
+                <div class="field">
+                  <label>Username effect</label>
+                  <div class="opt-grid" id="unameFxRow">
+                    <button class="opt on" data-ufx="none">None</button>
+                    <button class="opt" data-ufx="glow">Glow</button>
+                    <button class="opt" data-ufx="typewriter">Typewriter</button>
+                    <button class="opt" data-ufx="glitch" data-pro="1">Glitch</button>
+                    <button class="opt" data-ufx="rainbow" data-pro="1">Rainbow</button>
+                  </div>
+                </div>
+                <div class="field">
+                  <label>Background effect</label>
+                  <div class="opt-grid" id="bgFxRow">
+                    <button class="opt on" data-fx="none">None</button>
+                    <button class="opt" data-fx="nebula">Nebula</button>
+                    <button class="opt" data-fx="stars">Stars</button>
+                    <button class="opt" data-fx="aurora">Aurora</button>
+                    <button class="opt" data-fx="grain">Grain</button>
+                    <button class="opt" data-fx="particles" data-pro="1">Particles</button>
+                    <button class="opt" data-fx="rain" data-pro="1">Rain</button>
+                    <button class="opt" data-fx="snow" data-pro="1">Snow</button>
+                    <button class="opt" data-fx="plasma" data-pro="1">Plasma</button>
+                  </div>
+                </div>
+                <div class="field">
+                  <label>Icon glow</label>
+                  <div class="opt-grid" id="iconGlowRow">
+                    <button class="opt" data-iglow="off" type="button">Off</button>
+                    <button class="opt" data-iglow="white" type="button">White</button>
+                    <button class="opt" data-iglow="accent" type="button">Accent</button>
+                    <button class="opt" data-iglow="rainbow" type="button">Rainbow</button>
+                  </div>
+                  <span class="hint">Socials, badges and link icons get a soft bloom. Shadows are always on.</span>
+                </div>
+                <div class="field">
+                  <label>Font</label>
+                  <div class="opt-grid" id="fontRow">
+                    <button class="opt" data-font="default" type="button">Default</button>
+                    <button class="opt" data-font="pixel" type="button" style="font-family:'Pixelify Sans',monospace">Pixel</button>
+                    <button class="opt" data-font="mono" type="button" style="font-family:'JetBrains Mono',monospace">Mono</button>
+                    <button class="opt" data-font="serif" type="button" style="font-family:'Instrument Serif',serif">Serif</button>
+                  </div>
+                </div>
+                <div class="field">
+                  <label>Custom cursor</label>
+                  <div class="btns">
+                    <button class="btn btn-ghost btn-sm" id="cursorBtn" type="button">Upload cursor</button>
+                    <button class="btn btn-ghost btn-sm" id="cursorClear" type="button">Reset</button>
+                    <input type="file" id="cursorInput" accept="image/png,image/webp,image/gif,.png,.webp,.gif,.cur" hidden>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="fSplash">Enter text</label>
+                  <div class="input-wrap">
+                    <svg class="ico"><use href="#i-spark"/></svg>
+                    <input type="text" id="fSplash" maxlength="80" placeholder="You Will Become A Rival To Measure My Vessel Against.">
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="d-card">
+              <div class="d-head"><div><h3>About, skills &amp; widgets</h3><p>Extra sections on the page</p></div></div>
+              <div class="ctl-group">
+                <div class="field">
+                  <label for="fAbout">About me</label>
+                  <div class="input-wrap ta">
+                    <textarea id="fAbout" maxlength="400" placeholder="**bold** *italic* and [links](https://)"></textarea>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="fSkills">Skills (comma separated)</label>
+                  <div class="input-wrap">
+                    <svg class="ico"><use href="#i-star"/></svg>
+                    <input type="text" id="fSkills" maxlength="80" placeholder="Design, Motion, Stream">
+                  </div>
+                </div>
+                <div class="toggle-row">
+                  <div class="tr-txt"><b>Discord widget</b><span>Presence card with your Discord name and status.</span></div>
+                  <label class="switch"><input type="checkbox" id="wDiscord"><span class="track"></span></label>
+                </div>
+                <div class="ctl-group" id="discordStatusWrap" hidden>
+                  <div class="field">
+                    <label>Live presence</label>
+                    <div class="dc-link" id="dcLinkBox">
+                      <span class="dc-link-ico"><svg class="ico"><use href="#i-discord"/></svg></span>
+                      <div class="dc-link-txt">
+                        <b>Link your Discord</b>
+                        <span id="dcLinkNote">Sign in with Discord and the khaleej.bio bot shows your status, game and Spotify live on your page.</span>
+                      </div>
+                      <button class="btn btn-primary btn-sm" id="dcLink" type="button">Link Discord</button>
+                    </div>
+                    <div class="dc-state" id="dcState" hidden></div>
+                  </div>
+                  <details class="dc-alt" id="dcAlt">
+                    <summary>Or use Lanyard with your user ID</summary>
+                    <div class="dc-connect">
+                      <div class="input-wrap">
+                        <svg class="ico"><use href="#i-discord"/></svg>
+                        <input type="text" id="fDiscordId" inputmode="numeric" maxlength="20" placeholder="Your Discord user ID" spellcheck="false">
+                      </div>
+                      <button class="btn btn-ghost btn-sm" id="dcConnect" type="button">Connect</button>
+                    </div>
+                    <span class="hint">Join the <a class="link-u" href="https://discord.gg/lanyard" target="_blank" rel="noopener">Lanyard server</a> once, then paste your user ID
+                      (Discord Settings → Advanced → Developer Mode, then right-click your name → Copy User ID).</span>
+                  </details>
+                  <div class="toggle-row">
+                    <div class="tr-txt"><b>Use Discord as profile picture</b><span>Your Discord avatar with a live status dot. Used automatically if you haven't uploaded a picture.</span></div>
+                    <label class="switch"><input type="checkbox" id="sDiscordAvatar"><span class="track"></span></label>
+                  </div>
+                  <div class="field">
+                    <label for="fDiscordStatus">Fallback status line</label>
+                    <div class="input-wrap">
+                      <svg class="ico"><use href="#i-discord"/></svg>
+                      <input type="text" id="fDiscordStatus" maxlength="48" placeholder="last seen unknown">
+                    </div>
+                    <span class="hint">Shown when Discord isn't connected.</span>
+                  </div>
+                </div>
+                <div class="toggle-row">
+                  <div class="tr-txt"><b>VALORANT widget</b><span>Opens Tracker.gg and pulls live rank when it can.</span></div>
+                  <label class="switch"><input type="checkbox" id="wValo"><span class="track"></span></label>
+                </div>
+                <div id="valoRankWrap" hidden>
+                  <div class="grid-2">
+                    <div class="field">
+                      <label for="fValoRiot">Riot ID</label>
+                      <div class="input-wrap">
+                        <input type="text" id="fValoRiot" maxlength="32" placeholder="Name#TAG">
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label for="fValoRegion">Region</label>
+                      <div class="input-wrap">
+                        <select id="fValoRegion">
+                          <option value="eu">EU</option>
+                          <option value="na">NA</option>
+                          <option value="ap">AP</option>
+                          <option value="kr">KR</option>
+                          <option value="latam">LATAM</option>
+                          <option value="br">BR</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="fValoRank">Rank</label>
+                    <div class="input-wrap">
+                      <input type="text" id="fValoRank" maxlength="24" placeholder="Pulled from Tracker, or type it">
+                    </div>
+                    <span class="hint" id="valoHint">Chip links to tracker.gg. Refresh to pull MMR.</span>
+                  </div>
+                  <div class="btns">
+                    <button class="btn btn-ghost btn-sm" id="valoRefresh" type="button">
+                      <svg class="ico"><use href="#i-refresh"/></svg> Pull from Tracker
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="d-card">
+              <div class="d-head"><div><h3>Audio</h3><p>mp3 or mp4 — the sound plays on your page</p></div></div>
+              <div class="ctl-group">
+                <div class="field">
+                  <label>Look</label>
+                  <div class="opt-grid" id="audioStyleRow">
+                    <button class="opt on" data-astyle="player" type="button">Music player</button>
+                    <button class="opt" data-astyle="volume" type="button">Volume</button>
+                    <button class="opt" data-astyle="hidden" type="button">Hidden</button>
+                  </div>
+                  <span class="hint">Hidden keeps the music playing with no player on your page. Turn on the splash screen so it can start when someone enters.</span>
+                </div>
+                <div class="grid-2">
+                  <div class="field">
+                    <label for="fTrack">Track title</label>
+                    <div class="input-wrap">
+                      <svg class="ico"><use href="#i-music"/></svg>
+                      <input type="text" id="fTrack" maxlength="48" placeholder="Optional title">
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="fArtist">Artist</label>
+                    <div class="input-wrap">
+                      <svg class="ico"><use href="#i-user"/></svg>
+                      <input type="text" id="fArtist" maxlength="48" placeholder="Optional artist">
+                    </div>
+                  </div>
+                </div>
+                <div class="field">
+                  <label>Upload a track</label>
+                  <div class="btns">
+                    <button class="btn btn-ghost btn-sm" id="audioBtn" type="button">
+                      <svg class="ico"><use href="#i-upload"/></svg> Upload mp3 / mp4
+                    </button>
+                    <button class="btn btn-ghost btn-sm" id="audioClear" type="button">Remove</button>
+                    <input type="file" id="audioInput" accept="audio/mpeg,audio/mp3,audio/wav,audio/ogg,audio/aac,audio/mp4,video/mp4,.mp3,.wav,.ogg,.m4a,.aac,.mp4" hidden>
+                  </div>
+                  <span class="hint" id="audioHint">mp3 or mp4, up to 50 MB. Only the sound plays.</span>
+                </div>
+                <div class="field">
+                  <label for="fMusicUrl">Or direct mp3 / mp4 URL</label>
+                  <div class="input-wrap">
+                    <svg class="ico"><use href="#i-link"/></svg>
+                    <input type="url" id="fMusicUrl" placeholder="https://…/track.mp3">
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <div class="row gap-12" style="flex-wrap:wrap">
+              <button class="btn btn-primary" id="saveAppearance">
+                <svg class="ico"><use href="#i-check"/></svg> Save changes
+              </button>
+              <button class="btn btn-ghost" id="resetAppearance">Reset</button>
+            </div>
+          </div>
+
+          <div class="preview-host"></div>
+        </div>
+      </section>
+
+      <!-- ============ LINKS ============ -->
+      <section class="panel" id="panel-links">
+        <header class="panel-head">
+          <h2>Links &amp; socials</h2>
+          <p>Drag to reorder. Changes save as you go.</p>
+        </header>
+
+        <div class="split">
+          <div class="stack gap-16">
+            <article class="d-card">
+              <div class="d-head">
+                <div><h3>Your links</h3><p id="linksSub">0 links</p></div>
+                <button class="btn btn-primary btn-sm" id="addLink">
+                  <svg class="ico"><use href="#i-plus"/></svg> Add link
+                </button>
+              </div>
+              <div class="ctl-group" id="linkList" style="gap:9px"></div>
+            </article>
+
+            <article class="d-card">
+              <div class="d-head"><div><h3>Socials</h3><p>Just the handle. Link opens your profile, Copy copies the username when clicked.</p></div></div>
+              <div class="ctl-group grid-2" id="socialGrid"></div>
+            </article>
+          </div>
+
+          <div class="preview-host"></div>
+        </div>
+      </section>
+
+      <!-- ============ BADGES ============ -->
+      <section class="panel" id="panel-badges">
+        <header class="panel-head">
+          <h2>Badges</h2>
+          <p>Owner, verified, OG and staff. Equip the ones you have.</p>
+        </header>
+        <div class="split">
+          <div class="stack gap-16">
+            <div class="badge-shop" id="badgeShop"></div>
+          </div>
+          <div class="preview-host"></div>
+        </div>
+      </section>
+
+      <!-- ============ PRO ============ -->
+      <section class="panel" id="panel-pro">
+        <header class="panel-head">
+          <h2>Extras</h2>
+          <p>They save as you click.</p>
+        </header>
+        <div class="split">
+          <div class="pro-stack" id="proStack"></div>
+          <div class="preview-host"></div>
+        </div>
+      </section>
+
+      <!-- ============ SETTINGS ============ -->
+      <section class="panel" id="panel-settings">
+        <header class="panel-head">
+          <h2>Settings</h2>
+          <p>Account, connections and the scary buttons.</p>
+        </header>
+
+        <div class="stack gap-16" style="max-width:860px">
+          <article class="d-card">
+            <div class="d-head"><div><h3>Your UID</h3><p class="faint" id="meUidLine">UID —</p></div>
+              <button class="btn btn-ghost btn-sm" id="copyUidBtn" type="button">Copy UID</button></div>
+          </article>
+
+          <article class="d-card">
+            <div class="d-head"><div><h3>Account</h3><p>Your handle and email</p></div></div>
+            <div class="ctl-group">
+              <div class="grid-2">
+                <div class="field">
+                  <label for="sUsername">Username</label>
+                  <div class="input-wrap" id="wrapSUsername">
+                    <span class="prefix">khaleej.bio/</span>
+                    <input type="text" id="sUsername" maxlength="20" spellcheck="false">
+                  </div>
+                  <span class="hint" id="hintSUsername"></span>
+                </div>
+                <div class="field">
+                  <label for="sEmail">Email</label>
+                  <div class="input-wrap" id="wrapSEmail">
+                    <svg class="ico"><use href="#i-mail"/></svg>
+                    <input type="email" id="sEmail" spellcheck="false">
+                  </div>
+                  <span class="hint" id="hintSEmail"></span>
+                </div>
+              </div>
+              <div>
+                <button class="btn btn-primary btn-sm" id="saveAccount">Save account</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="d-card">
+            <div class="d-head"><div><h3>Password</h3><p>Change the one you log in with</p></div></div>
+            <div class="ctl-group">
+              <div class="grid-2">
+                <div class="field">
+                  <label for="pwCurrent">Current password</label>
+                  <div class="input-wrap" id="wrapPwCurrent">
+                    <svg class="ico"><use href="#i-lock"/></svg>
+                    <input type="password" id="pwCurrent" placeholder="••••••••">
+                  </div>
+                  <span class="hint" id="hintPwCurrent"></span>
+                </div>
+                <div class="field">
+                  <label for="pwNew">New password</label>
+                  <div class="input-wrap" id="wrapPwNew">
+                    <svg class="ico"><use href="#i-key"/></svg>
+                    <input type="password" id="pwNew" placeholder="At least 8 characters">
+                    <button class="eye-btn" type="button" data-toggle-pw="pwNew" aria-label="Show password">
+                      <svg class="ico"><use href="#i-eye"/></svg>
+                    </button>
+                  </div>
+                  <span class="hint" id="hintPwNew"></span>
+                </div>
+              </div>
+              <div>
+                <button class="btn btn-primary btn-sm" id="savePassword">Update password</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="d-card">
+            <div class="d-head"><div><h3>Connections</h3><p>Linked accounts</p></div></div>
+            <div class="conn-row">
+              <span class="ci dsc"><svg class="ico"><use href="#i-discord"/></svg></span>
+              <div class="ct">
+                <b>Discord</b>
+                <span id="discordState">Not connected</span>
+              </div>
+              <button class="btn btn-ghost btn-sm" id="discordBtn">Connect</button>
+            </div>
+            <div class="conn-row">
+              <span class="ci"><svg class="ico"><use href="#i-spotify"/></svg></span>
+              <div class="ct">
+                <b>Spotify</b>
+                <span>Show what you're listening to</span>
+              </div>
+              <button class="btn btn-ghost btn-sm" disabled>Soon</button>
+            </div>
+          </article>
+
+          <article class="d-card danger-zone">
+            <div class="d-head"><div><h3>Danger zone</h3><p>These can't be undone</p></div></div>
+            <div class="ctl-group">
+              <div class="toggle-row">
+                <div class="tr-txt"><b>Export your data</b><span>Download everything as JSON.</span></div>
+                <button class="btn btn-ghost btn-sm" id="exportBtn">
+                  <svg class="ico"><use href="#i-upload"/></svg> Export
+                </button>
+              </div>
+              <div class="toggle-row">
+                <div class="tr-txt"><b>Delete account</b><span>Deletes your page, links and uploads for good.</span></div>
+                <button class="btn btn-danger btn-sm" id="deleteBtn">
+                  <svg class="ico"><use href="#i-trash"/></svg> Delete
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<!-- live preview (moved between panels by JS) -->
+<div class="preview-pane" id="livePreview" hidden>
+  <div class="preview-frame">
+    <div class="preview-bar">
+      <span class="dots"><i></i><i></i><i></i></span>
+      <span class="u" id="pvUrl">khaleej.bio/—</span>
+      <span class="pv-device" id="pvDevice" role="group" aria-label="Preview size">
+        <button type="button" class="on" data-device="desktop" title="Desktop" aria-label="Desktop preview"><svg class="ico"><use href="#i-monitor"/></svg></button>
+        <button type="button" data-device="mobile" title="Mobile" aria-label="Mobile preview"><svg class="ico"><use href="#i-phone"/></svg></button>
+      </span>
+      <button class="pv-replay" id="pvReplay" type="button" title="Replay entrance" aria-label="Replay entrance animation">
+        <svg class="ico"><use href="#i-refresh"/></svg>
+      </button>
+    </div>
+    <div class="preview-scroll is-desktop">
+      <div class="pv" id="pvRender"></div>
+    </div>
+  </div>
+  <p class="faint" style="font-size:.78rem;text-align:center">Live preview — this is exactly what visitors see.</p>
+</div>
+
+<!-- confirm modal -->
+<div class="modal-back" id="modalBack">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <h3 id="modalTitle">Are you sure?</h3>
+    <p id="modalText">This can't be undone.</p>
+    <div class="field" id="modalFieldWrap" hidden>
+      <label for="modalInput">Type <b id="modalConfirmWord">delete</b> to confirm</label>
+      <div class="input-wrap">
+        <svg class="ico"><use href="#i-alert"/></svg>
+        <input type="text" id="modalInput" autocomplete="off" spellcheck="false">
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="modalCancel">Cancel</button>
+      <button class="btn btn-danger" id="modalOk">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/defaults.js"></script>
+<script src="assets/js/pro-features.js"></script>
+<script src="assets/js/badges.js"></script>
+<script src="assets/js/valo.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/player.js"></script>
+<script src="assets/js/profile-render.js"></script>
+<script src="assets/js/dashboard.js"></script>
+</body>
+</html>

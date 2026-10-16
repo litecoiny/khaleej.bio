@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>khaleej.bio — one link, every side of you</title>
+<meta name="description" content="khaleej.bio is the link-in-bio built for creators: a single page for your socials, drops and music, with custom themes and a built-in file host.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="assets/img/wing.png" type="image/png">
+<meta property="og:title" content="khaleej.bio — one link, every side of you">
+<meta property="og:description" content="The link-in-bio that looks expensive. Claim your name today.">
+<meta property="og:image" content="assets/img/og.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/core.css">
+<link rel="stylesheet" href="assets/css/home.css">
+</head>
+<body>
+<script src="assets/js/icons.js"></script>
+
+<!-- preloader -->
+<div class="preloader">
+  <div class="pl-inner">
+    <img src="assets/img/wing.png" alt="">
+    <div class="pl-bar"><i></i></div>
+  </div>
+</div>
+
+<!-- ambient background -->
+<div class="bg-layers" aria-hidden="true">
+  <div class="bg-wing"></div>
+  <div class="bg-grid"></div>
+  <div class="bg-aurora a1"></div>
+  <div class="bg-aurora a2"></div>
+  <div class="bg-aurora a3"></div>
+  <div class="bg-noise"></div>
+  <div class="bg-vignette"></div>
+</div>
+<div class="scroll-bar"></div>
+
+<!-- nav -->
+<header class="nav">
+  <div class="wrap wrap-wide">
+    <a class="brand" href="index.html" aria-label="khaleej.bio home">
+      <img src="assets/img/wing.png" alt="khaleej.bio logo">
+      <span>khaleej<span class="tld">.bio</span></span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#features">Features</a>
+      <a href="#templates">Templates</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a class="btn btn-line" href="login.html">Log in</a>
+      <a class="btn btn-primary" href="signup.html">
+        Claim your page
+        <svg class="ico"><use href="#i-arrow-right"/></svg>
+      </a>
+      <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu">
+  <a href="#features">Features</a>
+  <a href="#templates">Templates</a>
+  <a href="#faq">FAQ</a>
+  <a href="login.html">Log in</a>
+  <a class="btn btn-primary" href="signup.html">Claim your page</a>
+</div>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap wrap-wide">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow" data-reveal><i class="dot"></i> Open beta — names are first come, first served</span>
+
+        <h1 class="display">
+          <span class="line"><span>Make them</span></span>
+          <span class="line"><span>remember</span></span>
+          <span class="line"><span class="grad-text">the name.</span></span>
+        </h1>
+
+        <p class="lede" data-reveal style="--d:.15s">
+          One page for every link, drop and platform you live on — with a player
+          that matches your colours, and a file host built right in.
+        </p>
+
+        <form class="claim" id="claimForm" data-reveal style="--d:.25s" autocomplete="off">
+          <span class="pre">khaleej.bio/</span>
+          <input type="text" id="claimName" placeholder="yourname" aria-label="Choose your username" maxlength="20" spellcheck="false">
+          <button class="btn btn-primary" type="submit">
+            Claim
+            <svg class="ico"><use href="#i-arrow-right"/></svg>
+          </button>
+        </form>
+        <p class="hint" id="claimHint" data-reveal style="--d:.3s"></p>
+      </div>
+
+      <!-- live profile preview -->
+      <div class="stage" data-reveal="scale" style="--d:.2s">
+        <div class="stage-glow" aria-hidden="true"></div>
+
+        <article class="pcard" data-tilt="7" data-parallax="8">
+          <div class="pcard-banner">
+            <img src="assets/img/banner-default.svg" alt="">
+          </div>
+          <div class="pcard-body">
+            <span class="avatar ring" style="width:74px;height:74px">
+              <img src="assets/img/avatar-1.svg" alt="">
+            </span>
+
+            <h3 class="pcard-name">
+              Ada
+              <svg class="ico"><use href="#i-verified"/></svg>
+            </h3>
+            <p class="pcard-handle">khaleej.bio/a</p>
+            <p class="pcard-bio">Motion designer. Posting the work, the gear and the playlists.</p>
+
+            <div class="pcard-socials">
+              <a href="#" aria-label="X" data-social="x"><svg class="ico ico-sm"><use href="#i-x"/></svg></a>
+              <a href="#" aria-label="Instagram" data-social="instagram"><svg class="ico ico-sm"><use href="#i-instagram"/></svg></a>
+              <a href="#" aria-label="YouTube" data-social="youtube"><svg class="ico ico-sm"><use href="#i-youtube"/></svg></a>
+              <a href="#" aria-label="Twitch" data-social="twitch"><svg class="ico ico-sm"><use href="#i-twitch"/></svg></a>
+              <a href="#" aria-label="Spotify" data-social="spotify"><svg class="ico ico-sm"><use href="#i-spotify"/></svg></a>
+            </div>
+
+            <div class="pcard-links">
+              <a class="plink" href="#">
+                <svg class="ico"><use href="#i-globe"/></svg> Portfolio 2026
+                <svg class="ico arr"><use href="#i-arrow-up-right"/></svg>
+              </a>
+              <a class="plink" href="#">
+                <svg class="ico"><use href="#i-spark"/></svg> New preset pack
+                <svg class="ico arr"><use href="#i-arrow-up-right"/></svg>
+              </a>
+              <a class="plink" href="#">
+                <svg class="ico"><use href="#i-discord"/></svg> Join the Discord
+                <svg class="ico arr"><use href="#i-arrow-up-right"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- floating widgets -->
+        <aside class="float float-presence" data-parallax="22">
+          <div class="fw-head fw-val">
+            <span class="fw-val-mark"><img src="assets/img/valorant.png" alt="VALORANT"></span>
+            <div>
+              <div class="fw-title">Playing Valorant</div>
+              <div class="fw-sub">Ascendant II · 34m elapsed</div>
+            </div>
+          </div>
+          <div class="fw-bar"><i style="width:64%"></i></div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ FEATURES ============ -->
+<section class="section" id="features">
+  <div class="wrap wrap-wide">
+    <header class="section-head" data-reveal>
+      <span class="eyebrow"><svg class="ico"><use href="#i-layers"/></svg> Everything in one page</span>
+      <h2 class="h2" style="margin-top:20px">Built for people who care<br><span class="grad-text">how it looks.</span></h2>
+      <p class="lede">Every detail is yours to shape — colours, layout, effects, the music that
+        plays when someone lands. No templates you can spot from a mile away.</p>
+    </header>
+
+    <div class="bento" data-stagger="0.08">
+      <article class="card b-4" data-reveal>
+        <div class="f-ico"><svg class="ico ico-lg"><use href="#i-palette"/></svg></div>
+        <h3>Themes down to the pixel</h3>
+        <p class="ctext">Pick an accent, a surface tint and a glow. Gradients, glass, borders and
+          typography all follow along automatically — your page, never a template.</p>
+        <div class="b-visual">
+          <div class="swatches">
+            <i></i><i></i><i></i><i></i><i></i>
+          </div>
+        </div>
+      </article>
+
+      <article class="card b-2" data-reveal>
+        <div class="f-ico"><svg class="ico ico-lg"><use href="#i-music"/></svg></div>
+        <h3>Music on the page</h3>
+        <p class="ctext">Paste a YouTube, Spotify or SoundCloud link. Visitors press play without leaving.</p>
+        <div class="b-visual">
+          <span class="chip chip-brand"><svg class="ico"><use href="#i-play"/></svg> Plays in-page</span>
+        </div>
+      </article>
+
+      <article class="card b-3" data-reveal>
+        <div class="f-ico"><svg class="ico ico-lg"><use href="#i-link"/></svg></div>
+        <h3>Connect every platform</h3>
+        <p class="ctext">Thirty-plus integrations with live presence and
+          now-playing states that refresh on their own.</p>
+        <div class="b-visual">
+          <div class="b-tiles">
+            <span data-social="discord"><svg class="ico"><use href="#i-discord"/></svg></span>
+            <span data-social="spotify"><svg class="ico"><use href="#i-spotify"/></svg></span>
+            <span data-social="twitch"><svg class="ico"><use href="#i-twitch"/></svg></span>
+            <span data-social="github"><svg class="ico"><use href="#i-github"/></svg></span>
+            <span data-social="instagram"><svg class="ico"><use href="#i-instagram"/></svg></span>
+            <span data-social="youtube"><svg class="ico"><use href="#i-youtube"/></svg></span>
+            <span data-social="tiktok"><svg class="ico"><use href="#i-tiktok"/></svg></span>
+            <span data-social="telegram"><svg class="ico"><use href="#i-telegram"/></svg></span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card b-3" data-reveal>
+        <div class="f-ico"><svg class="ico ico-lg"><use href="#i-image"/></svg></div>
+        <h3>File host included</h3>
+        <p class="ctext">Drop an image or a clip and get a short link instantly — embeds render
+          properly everywhere you paste them.</p>
+        <div class="b-visual">
+          <div class="b-upload">
+            <svg class="ico ico-lg"><use href="#i-upload"/></svg>
+            <div class="ub">
+              <div class="fw-title">clip-final-v3.mp4</div>
+              <div class="fw-bar"><i style="width:78%"></i></div>
+            </div>
+            <span class="chip chip-ok">78%</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card b-2" data-reveal>
+        <div class="f-ico"><svg class="ico ico-lg"><use href="#i-shield"/></svg></div>
+        <h3>Yours alone</h3>
+        <p class="ctext">Name locking, link protection and no trackers sold on. Ever.</p>
+        <div class="b-visual">
+          <span class="chip chip-brand"><svg class="ico"><use href="#i-lock"/></svg> Name locked</span>
+        </div>
+      </article>
+
+      <article class="card b-4" data-reveal>
+        <div class="f-ico"><svg class="ico ico-lg"><use href="#i-cursor"/></svg></div>
+        <h3>Effects that feel alive</h3>
+        <p class="ctext">Cursor trails, tilt, spotlight hovers, typewriter intros and splash
+          screens — switch them on, tune the intensity, done.</p>
+        <div class="b-visual">
+          <div class="row gap-8" style="flex-wrap:wrap">
+            <span class="chip"><svg class="ico"><use href="#i-spark"/></svg> Cursor glow</span>
+            <span class="chip"><svg class="ico"><use href="#i-layers"/></svg> 3D tilt</span>
+            <span class="chip"><svg class="ico"><use href="#i-bolt"/></svg> Typewriter</span>
+            <span class="chip"><svg class="ico"><use href="#i-music"/></svg> Autoplay</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ TEMPLATES ============ -->
+<section class="section" id="templates">
+  <div class="wrap wrap-wide">
+    <header class="section-head" data-reveal>
+      <span class="eyebrow"><svg class="ico"><use href="#i-grid"/></svg> Start from a look</span>
+      <h2 class="h2" style="margin-top:20px">Three minutes to a page<br>that looks <span class="grad-text">handmade.</span></h2>
+      <p class="lede">Begin with a layout, then pull it apart. Everything below is editable the
+        second you land in your dashboard.</p>
+    </header>
+
+    <div class="showcase" data-stagger="0.1">
+      <a class="tpl" href="signup.html" data-reveal data-cursor="use it">
+        <img src="assets/img/tpl-1.svg" alt="Midnight template">
+        <div class="tpl-cap"><b>Midnight</b><span>Stacked links</span></div>
+      </a>
+      <a class="tpl" href="signup.html" data-reveal data-cursor="use it">
+        <img src="assets/img/tpl-2.svg" alt="Mist template">
+        <div class="tpl-cap"><b>Mist</b><span>Two-column grid</span></div>
+      </a>
+      <a class="tpl" href="signup.html" data-reveal data-cursor="use it">
+        <img src="assets/img/tpl-3.svg" alt="Signal template">
+        <div class="tpl-cap"><b>Signal</b><span>Icons + player</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq">
+  <div class="wrap wrap-wide">
+    <header class="section-head" data-reveal>
+      <span class="eyebrow"><svg class="ico"><use href="#i-info"/></svg> FAQ</span>
+      <h2 class="h2" style="margin-top:20px">Questions? <span class="grad-text">We've got answers.</span></h2>
+      <p class="lede">Everything people usually ask before claiming a name.</p>
+    </header>
+
+    <div class="faq" id="faq" data-reveal>
+      <article class="qa open">
+        <button class="qa-q" aria-expanded="true">What is khaleej.bio?<span class="pm"></span></button>
+        <div class="qa-a"><div><p>It's a link-in-bio platform: one fast, good-looking page that holds your
+          socials, projects, music and files. Think of it as the front door you send people to instead of
+          five different profile links.</p></div></div>
+      </article>
+      <article class="qa">
+        <button class="qa-q" aria-expanded="false">How long does setup take?<span class="pm"></span></button>
+        <div class="qa-a"><div><p>Around three minutes. Claim a name, pick a template, paste your links.
+          Everything after that — colours, effects, audio — is optional polish you can come back to.</p></div></div>
+      </article>
+      <article class="qa">
+        <button class="qa-q" aria-expanded="false">Is it actually free?<span class="pm"></span></button>
+        <div class="qa-a"><div><p>Yes. Every feature is free: audio player, every layout, widgets, effects, badges and unlimited links. No ads and no watermark on your page.</p></div></div>
+      </article>
+      <article class="qa">
+        <button class="qa-q" aria-expanded="false">What does signing in with Discord do?<span class="pm"></span></button>
+        <div class="qa-a"><div><p>It creates your account without a password and, if you allow it, shows your live
+          Discord presence on your page — status, current game and server invite. You can unlink it whenever
+          you like from Settings.</p></div></div>
+      </article>
+      <article class="qa">
+        <button class="qa-q" aria-expanded="false">Who owns my data?<span class="pm"></span></button>
+        <div class="qa-a"><div><p>You do. You can export or delete everything from Settings in one action.</p></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="section">
+  <div class="wrap wrap-wide">
+    <div class="cta-band" data-reveal="scale">
+      <div class="in">
+        <img class="paw" src="assets/img/wing.png" alt="">
+        <h2 class="h2">Your name is still available.<br><span class="grad-text">Probably.</span></h2>
+        <p class="lede" style="text-align:center">Claim it before someone with better taste does.</p>
+        <div class="row gap-12" style="flex-wrap:wrap;justify-content:center">
+          <a class="btn btn-primary btn-lg" href="signup.html">
+            Create your page
+            <svg class="ico"><use href="#i-arrow-right"/></svg>
+          </a>
+          <a class="btn btn-ghost btn-lg" href="u.html?u=demo" data-cursor="preview">
+            <svg class="ico"><use href="#i-eye"/></svg>
+            See a live page
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="wrap wrap-wide">
+    <div class="footer-grid">
+      <div class="footer-col footer-about">
+        <a class="brand" href="index.html">
+          <img src="assets/img/wing.png" alt="">
+          <span>khaleej<span class="tld">.bio</span></span>
+        </a>
+        <p>One link for every side of you. Built to be remembered.</p>
+        <div class="socials">
+          <a href="discord.html" aria-label="Discord" data-social="discord"><svg class="ico"><use href="#i-discord"/></svg></a>
+          <a href="#" aria-label="X" data-social="x"><svg class="ico"><use href="#i-x"/></svg></a>
+          <a href="#" aria-label="Instagram" data-social="instagram"><svg class="ico"><use href="#i-instagram"/></svg></a>
+          <a href="#" aria-label="GitHub" data-social="github"><svg class="ico"><use href="#i-github"/></svg></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Product</h5>
+        <a href="#features">Features</a>
+        <a href="#templates">Templates</a>
+        <a href="u.html?u=demo">Example page</a>
+        <a href="dashboard.html">Dashboard</a>
+      </div>
+
+      <div class="footer-col">
+        <h5>Account</h5>
+        <a href="signup.html">Create account</a>
+        <a href="login.html">Log in</a>
+        <a href="discord.html">Continue with Discord</a>
+        <a href="dashboard.html#settings">Settings</a>
+      </div>
+
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="#faq">Help centre</a>
+        <a href="#">Status</a>
+        <a href="#">Terms of service</a>
+        <a href="#">Privacy policy</a>
+      </div>
+    </div>
+
+    <div class="footer-base">
+      <span>&copy; <span data-year>2026</span> khaleej.bio — all rights reserved.</span>
+      <nav>
+        <a class="link-u" href="#">Terms</a>
+        <a class="link-u" href="#">Privacy</a>
+        <a class="link-u" href="#">Cookies</a>
+      </nav>
+    </div>
+
+    <span class="footer-mark" aria-hidden="true">khaleej.bio</span>
+  </div>
+</footer>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/defaults.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/player.js"></script>
+<script src="assets/js/home.js"></script>
+</body>
+</html>
